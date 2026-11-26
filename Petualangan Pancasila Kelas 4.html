@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Petualangan Pancasila Kelas 4</title>
+<style>
+:root{--bg:#e8fbf3;--card:#fff;--tx:#2b2d42;--pr:#e17055;--ok:#00b894;--no:#ff7675;--ye:#fdcb6e;--sh:0 6px 0 rgba(0,0,0,.12);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10302a;--card:#1d4a40;--tx:#f0fff9}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--tx);font-family:"Baloo 2","Comic Sans MS","Trebuchet MS",sans-serif;font-size:18px;min-height:100vh;overflow-x:hidden}
+.wrap{max-width:720px;margin:0 auto;padding:14px}
+.top{display:flex;align-items:center;gap:10px}
+.bar{flex:1;height:16px;background:rgba(225,112,85,.2);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff7675,#fdcb6e,#55efc4);border-radius:99px;transition:width .5s}
+.pill{background:var(--ye);color:#2b2d42;border-radius:99px;padding:4px 12px;font-weight:700;white-space:nowrap}
+button{font:inherit;cursor:pointer}
+.mute{border:0;background:var(--card);color:var(--tx);border-radius:50%;width:42px;height:42px;font-size:20px;box-shadow:var(--sh)}
+.card{background:var(--card);border-radius:24px;padding:18px;margin-top:14px;box-shadow:var(--sh);animation:pop .4s}
+.hero{text-align:center}
+.hero h1{margin:4px 0;font-size:30px;color:var(--pr)}
+.mas{font-size:72px;display:inline-block;animation:bob 1.6s ease-in-out infinite}
+.mas.hop{animation:hop .6s}.mas.shk{animation:shk .5s}
+.tag{display:inline-block;background:#ffe3d9;color:#a3391f;border-radius:99px;padding:2px 12px;font-size:14px;font-weight:700}
+.q{line-height:1.5;margin:10px 0}
+.q .read{background:#fff3c4;color:#2b2d42;border-radius:14px;padding:10px 12px;margin-bottom:8px;display:block}
+.opt{display:block;width:100%;text-align:left;border:3px solid #cfeee3;background:var(--card);color:var(--tx);border-radius:16px;padding:12px 14px;margin:9px 0;box-shadow:0 4px 0 #cfeee3;transition:transform .15s}
+.opt:hover:not(:disabled){transform:translateY(-3px);border-color:var(--pr)}
+.opt.sel{border-color:var(--pr);background:#ffeee8;color:#2b2d42}
+.opt.ok{border-color:var(--ok);background:#d4f8ec;color:#064;animation:hop .6s}
+.opt.no{border-color:var(--no);background:#ffe3e3;color:#900;animation:shk .5s}
+.go{border:0;background:var(--pr);color:#fff;border-radius:99px;padding:12px 26px;font-weight:700;box-shadow:0 5px 0 #a3391f;margin-top:8px}
+.go:active{transform:translateY(4px);box-shadow:none}
+input[type=text]{font:inherit;width:100%;padding:12px;border-radius:14px;border:3px solid #cfeee3;background:var(--card);color:var(--tx)}
+.fb{margin-top:10px;padding:12px;border-radius:16px;font-weight:700;animation:pop .3s}
+.fb.ok{background:#d4f8ec;color:#064}.fb.no{background:#ffe9d6;color:#8a3b00}
+.cf{position:fixed;top:-30px;font-size:26px;pointer-events:none;animation:fall 2.4s linear forwards;z-index:9}
+.stars{font-size:44px}
+@keyframes pop{from{transform:scale(.92);opacity:0}to{transform:none;opacity:1}}
+@keyframes bob{50%{transform:translateY(-10px) rotate(4deg)}}
+@keyframes hop{30%{transform:translateY(-22px) scale(1.1)}60%{transform:translateY(0)}80%{transform:translateY(-8px)}}
+@keyframes shk{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <div class="top"><span class="pill" id="sc">⭐ 0</span><div class="bar"><i id="pb"></i></div><button class="mute" id="mu" aria-label="Suara">🔊</button></div>
+ <div id="app"></div>
+</div>
+<script>
+var BS=['Benar','Salah'],J=['Hak','Kewajiban','Kepala desa','BPD','Sekretaris kelurahan','Camat'];
+var Q=[
+{k:'p',t:'Aturan',q:'Aturan yang dibuat secara resmi, dituliskan dalam dokumen, dan berlaku bagi semua orang disebut norma …',o:['tidak tertulis','tertulis','kebiasaan','adat istiadat'],a:1},
+{k:'p',t:'Aturan',r:'(1) memakai helm saat berkendara<br>(2) berhenti ketika lampu lalu lintas merah<br>(3) mengucapkan salam ketika bertamu<br>(4) membayar pajak bumi dan bangunan',q:'Contoh aturan <b>tidak tertulis</b> ditunjukkan oleh nomor …',o:['(1)','(2)','(3)','(4)'],a:2},
+{k:'p',t:'Aturan',r:'🏍️ Seorang pengendara sepeda motor melaju melewati lampu merah tanpa helm. Petugas kepolisian menghentikannya di perempatan.',q:'Konsekuensi hukum yang harus diterima pengendara tersebut adalah …',o:['mendapat pujian dari petugas','ditilang dan membayar denda','diberi hadiah karena berani','dibiarkan karena jalanan sepi'],a:1},
+{k:'p',t:'Kewajiban',q:'Sebelum berangkat sekolah, kewajiban utama seorang anak di rumah adalah …',o:['bermain gawai','merapikan tempat tidur dan menyiapkan perlengkapan sekolah','menonton televisi','tidur kembali'],a:1},
+{k:'p',t:'Desa dan Kelurahan',q:'🏘️ Pemimpin desa yang dipilih langsung oleh warga melalui pesta demokrasi adalah …',o:['lurah','camat','kepala desa','bupati'],a:2},
+{k:'p',t:'Desa dan Kelurahan',r:'Pak Heru memimpin sebuah kelurahan di tengah kota. Ia ditugaskan oleh pemerintah kota dan menerima gaji dari pemerintah.',q:'Pernyataan yang benar tentang lurah dibandingkan kepala desa adalah …',o:['lurah dipilih langsung oleh warga','lurah berstatus PNS yang diangkat pemerintah','lurah dan kepala desa sama-sama dipilih warga','lurah bukan pegawai pemerintah'],a:1},
+{k:'p',t:'Budaya',q:'🏝️ Indonesia negara kepulauan, dan setiap daerah punya lingkungan alam berbeda. Pengaruh kondisi geografis terhadap budaya adalah …',o:['semua daerah memiliki budaya yang sama','setiap daerah mengembangkan budaya sesuai lingkungannya sehingga budaya beragam','budaya daerah hilang','penduduk tidak mengenal budaya lain'],a:1},
+{k:'p',t:'Rumah Adat',r:'🏠 Rumah panggung dengan atap bergonjong melengkung seperti tanduk kerbau.',q:'Rumah adat tersebut bernama …',o:['Honai','Joglo','Gadang','Betang'],a:2},
+{k:'p',t:'Tradisi Daerah',q:'Para pemuda Nias melompati susunan batu setinggi sekitar dua meter sebagai tanda kedewasaan. Tradisi tersebut bernama …',o:['Pasola','lompat batu (Fahombo)','karapan sapi','Rambu Solo'],a:1},
+{k:'p',t:'Alat Musik',r:'🎋 Alat musik dari bambu yang digoyangkan hingga berbunyi, berasal dari Jawa Barat.',q:'Nama alat musik tradisional tersebut adalah …',o:['sasando','angklung','tifa','kolintang'],a:1},
+{k:'p',t:'Tari Daerah',q:'💃 Tarian ini dibawakan banyak penari yang duduk berbaris, menepuk dada dan paha dengan gerakan serempak dan cepat. Tarian itu adalah …',o:['Pendet','Kecak','Saman','Jaipong'],a:2},
+{k:'p',t:'Lagu Daerah',q:'🎵 Lagu daerah <i>Ampar-Ampar Pisang</i> berasal dari provinsi …',o:['Kalimantan Selatan','Jawa Tengah','Maluku','Sumatera Utara'],a:0},
+{k:'p',t:'Melestarikan Budaya',q:'Sekolah Rina mengadakan pentas seni daerah, dan Rina diminta menarikan tari daerah. Sikap positif yang tepat adalah …',o:['menolak karena menganggap tari daerah kuno','ikut berlatih dan tampil dengan bangga','mengejek temannya yang menari','hanya menonton dari jauh'],a:1},
+{k:'p',t:'Persatuan',r:'Dewi murid baru dari Medan. Cara bicaranya berbeda dengan teman-teman di kelas barunya. Beberapa teman menirukan dan menertawakan dialek Dewi sehingga Dewi sedih.',q:'Tindakan solutif yang paling tepat demi persatuan adalah …',o:['ikut tertawa agar diterima teman','menegur dengan sopan dan mengajak Dewi berteman karena perbedaan dialek adalah kekayaan bangsa','menjauhi Dewi','meminta Dewi pindah kelas'],a:1},
+{k:'p',t:'Hak Murid',q:'Di sekolah, murid merasa aman, tidak diejek, dan tidak dihukum dengan kekerasan. Tujuan hak perlindungan bagi murid adalah …',o:['agar murid dapat belajar dengan aman dan nyaman','agar murid boleh melanggar aturan','agar guru tidak perlu mengajar','agar murid tidak perlu belajar'],a:0},
+{k:'p',t:'Kewajiban Murid',q:'🧹 Tindakan yang menunjukkan kewajiban menjaga kebersihan sekolah adalah …',o:['Dina membuang bungkus jajan ke tempat sampah dan ikut piket kelas','Beni membiarkan sampah di bawah mejanya','Rafi mencoret dinding kelas','Sinta melempar kertas ke kolong meja'],a:0},
+{k:'p',t:'Lembaga Desa',q:'Lembaga desa yang menampung aspirasi masyarakat dan mengawasi kinerja kepala desa adalah …',o:['RT','PKK','BPD','Karang Taruna'],a:2},
+{k:'p',t:'Lingkungan',q:'⛰️🌊 Gunung, sungai, danau, dan laut terbentuk secara alamiah tanpa campur tangan manusia. Lingkungan ini disebut lingkungan …',o:['buatan','alami','sosial','binaan'],a:1},
+{k:'p',t:'Lingkungan',r:'(1) gunung (2) sungai (3) bendungan (4) danau',q:'Contoh lingkungan <b>buatan</b> ditunjukkan oleh nomor …',o:['(1)','(2)','(3)','(4)'],a:2},
+{k:'p',t:'Pengamalan Pancasila',r:'Menjelang Hari Kemerdekaan, warga Desa Sukamaju yang berbeda suku dan agama bergotong royong membersihkan jalan, mengecat pagar, dan memasang bendera 🇮🇩 tanpa membeda-bedakan dan menjaga persatuan.',q:'Pengamalan sila yang paling tepat pada cerita tersebut adalah sila …',o:['pertama, Ketuhanan Yang Maha Esa','kedua, Kemanusiaan yang adil dan beradab','ketiga, Persatuan Indonesia','keempat, Kerakyatan yang dipimpin oleh hikmat kebijaksanaan'],a:2},
+{k:'b',t:'Benar atau Salah?',q:'Murid yang sering datang terlambat ke sekolah tidak melanggar tata tertib sekolah.',o:BS,a:1},
+{k:'b',t:'Benar atau Salah?',q:'Membuang sampah pada tempatnya merupakan kebiasaan yang membantu menjaga kebersihan sekolah.',o:BS,a:0},
+{k:'b',t:'Benar atau Salah?',q:'Murid berhak bertanya dan mengemukakan pendapat di kelas dengan cara yang sopan.',o:BS,a:0},
+{k:'b',t:'Benar atau Salah?',q:'Lurah dipilih langsung oleh rakyat melalui pemilihan, sama seperti kepala desa.',o:BS,a:1},
+{k:'b',t:'Benar atau Salah?',q:'Honai, rumah adat Papua, berbentuk bulat dengan atap kerucut dari jerami atau ilalang.',o:BS,a:0},
+{k:'p',t:'Jodohkan',q:'Sesuatu yang <b>boleh kita terima</b>, misalnya kasih sayang orang tua, disebut …',o:J,a:0},
+{k:'p',t:'Jodohkan',q:'Sesuatu yang <b>harus kita laksanakan</b>, misalnya menaati tata tertib sekolah, disebut …',o:J,a:1},
+{k:'p',t:'Jodohkan',q:'Pemimpin desa yang dipilih langsung oleh warga adalah …',o:J,a:2},
+{k:'p',t:'Jodohkan',q:'Lembaga yang mengawasi kinerja kepala desa adalah …',o:J,a:3},
+{k:'p',t:'Jodohkan',q:'Pegawai yang membantu lurah dalam pekerjaan administrasi kelurahan adalah …',o:J,a:4},
+{k:'m',t:'Pilih 3 Jawaban',q:'Pilih <b>3</b> contoh <b>hak</b> anak di lingkungan rumah!',o:['mendapat kasih sayang orang tua','mendapat makanan yang bergizi','membantu menyapu halaman rumah','mendapat pendidikan'],a:[0,1,3]},
+{k:'m',t:'Pilih 3 Jawaban',q:'Pilih <b>3</b> contoh aturan <b>tertulis</b> yang berlaku di masyarakat!',o:['tata tertib warga di papan pengumuman RT','rambu “Dilarang Parkir” di tepi jalan','peraturan daerah tentang larangan membuang sampah sembarangan','berbicara sopan kepada orang yang lebih tua'],a:[0,1,2]},
+{k:'m',t:'Pilih 3 Jawaban',q:'Pilih <b>3</b> alat musik <b>tradisional</b> Indonesia!',o:['🎋 angklung','🎶 sasando','🎸 gitar listrik','🥁 gamelan'],a:[0,1,3]},
+{k:'m',t:'Pilih 3 Jawaban',q:'Pilih <b>3</b> contoh <b>kewajiban</b> murid di sekolah!',o:['mengerjakan tugas dari guru','menaati tata tertib sekolah','mendapat perlindungan dari perundungan','menghormati guru dan teman'],a:[0,1,3]},
+{k:'m',t:'Pilih 3 Jawaban',q:'Pilih <b>3</b> lingkungan yang diciptakan oleh manusia!',o:['🌉 jembatan','🌲 hutan','🏫 gedung sekolah','🏗️ bendungan'],a:[0,2,3]},
+{k:'i',t:'Isian Singkat',q:'BPD adalah singkatan dari ……',a:['badan permusyawaratan desa']},
+{k:'i',t:'Isian Singkat',q:'Norma tidak tertulis bersumber dari kebiasaan dan …… yang diwariskan nenek moyang.',a:['adat istiadat','adat']},
+{k:'i',t:'Isian Singkat',q:'🌊 Perairan laut yang sempit dan berada di antara dua pulau disebut ……',a:['selat']},
+{k:'i',t:'Isian Singkat',q:'Sumber anggaran utama kelurahan berasal dari ……, yaitu anggaran pendapatan dan belanja daerah. (singkatan)',a:['apbd']},
+{k:'i',t:'Isian Singkat',q:'Seorang PNS memimpin kelurahan dan mengurus pelayanan administrasi. Jabatan PNS tersebut adalah ……',a:['lurah']},
+{k:'i',t:'Isian Singkat',q:'🗡️ Senjata tradisional berbilah melengkung dan tajam dari Jawa Barat bernama ……',a:['kujang']},
+{k:'i',t:'Isian Singkat',q:'👑 Pakaian adat dengan mahkota siger emas dan kain tapis bersulam benang emas berasal dari provinsi ……',a:['lampung']},
+{k:'i',t:'Isian Singkat',r:'Di kampung Rani tidak ada tulisan aturan resmi. Namun, anak-anak selalu mengucapkan salam, menunduk saat lewat di depan orang tua, dan tidak berteriak ketika ada tetangga beribadah.',q:'Berdasarkan penulisannya, norma yang ditaati warga kampung itu termasuk norma ……',a:['tidak tertulis']},
+{k:'i',t:'Isian Singkat',q:'🏠 Rumah panggung sangat panjang yang dihuni banyak keluarga, rumah adat suku Dayak, bernama ……',a:['rumah betang','betang']},
+{k:'i',t:'Isian Singkat',q:'🌸 Lagu daerah yang memuji keindahan bunga jeumpa yang harum berasal dari provinsi ……',a:['aceh']}
+];
+var PUJI=['Hebat sekali! Jawabanmu benar!','Wah, pintar! Kamu benar!','Luar biasa! Pertahankan ya!','Yeay! Benar sekali, kamu keren!'];
+var SEMANGAT=['Tidak apa-apa. Ayo semangat, coba lagi di soal berikutnya!','Jangan menyerah ya. Kamu pasti bisa!','Hampir benar! Terus belajar ya, kamu hebat!','Salah itu wajar. Ayo bangkit dan lanjutkan!'];
+var i=0,sc=0,on=true,sel=[],done=false,ac=null,$=function(x){return document.getElementById(x)};
+function tone(f,t,d,ty){if(!on)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();var o=ac.createOscillator(),g=ac.createGain();o.type=ty||'triangle';o.frequency.value=f;g.gain.setValueAtTime(.2,ac.currentTime+t);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+t+d);o.connect(g);g.connect(ac.destination);o.start(ac.currentTime+t);o.stop(ac.currentTime+t+d)}catch(e){}}
+function say(s){if(!on||!window.speechSynthesis)return;try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(s);u.lang='id-ID';u.rate=.95;u.pitch=1.3;speechSynthesis.speak(u)}catch(e){}}
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function good(){[523,659,784,1047].forEach(function(f,n){tone(f,n*.12,.25)});say(pick(PUJI));confetti()}
+function bad(){tone(330,0,.25,'sine');tone(262,.22,.4,'sine');say(pick(SEMANGAT))}
+function confetti(){var e=['🎉','⭐','🎈','✨','🌟','🇮🇩'];for(var n=0;n<24;n++){var s=document.createElement('span');s.className='cf';s.textContent=e[n%6];s.style.left=Math.random()*100+'vw';s.style.animationDelay=Math.random()*.6+'s';document.body.appendChild(s);setTimeout(function(x){x.remove()}.bind(null,s),3200)}}
+function mas(c){var m=$('mas');if(m){m.className='mas '+c;m.textContent=c=='hop'?'🥳':'🤗'}}
+$('mu').onclick=function(){on=!on;this.textContent=on?'🔊':'🔇';if(!on&&window.speechSynthesis)speechSynthesis.cancel()};
+function intro(){$('pb').style.width='0';$('app').innerHTML='<div class="card hero"><div class="mas">🦅</div><h1>Petualangan Pancasila</h1><p>Halo, teman-teman kelas 4! Aku Garuda Cilik. Yuk jawab '+Q.length+' soal seru tentang aturan, hak dan kewajiban, desa, dan budaya Indonesia. Jawaban benar dapat bintang ⭐ dan tepuk tangan!</p><button class="go" id="st">Mulai Petualangan 🚀</button></div>';$('st').onclick=function(){i=0;sc=0;$('sc').textContent='⭐ 0';tone(600,0,.15);say('Halo teman-teman! Ayo kita mulai petualangan!');show()}}
+function show(){done=false;sel=[];var q=Q[i],h='<div class="card"><span class="tag">Soal '+(i+1)+' dari '+Q.length+' · '+q.t+'</span><div class="q">'+(q.r?'<span class="read">'+q.r+'</span>':'')+q.q+'</div>';
+if(q.k=='i')h+='<input type="text" id="in" placeholder="Ketik jawabanmu di sini…" autocomplete="off"><button class="go" id="ck">Periksa ✔️</button>';
+else{q.o.forEach(function(o,n){h+='<button class="opt" data-n="'+n+'">'+(q.k=='b'?(n?'❌ ':'✅ '):String.fromCharCode(65+n)+'. ')+o+'</button>'});if(q.k=='m')h+='<button class="go" id="ck">Periksa ✔️</button>'}
+h+='<div id="fb"></div><div style="text-align:center"><span class="mas" id="mas">🦅</span></div></div>';$('app').innerHTML=h;$('pb').style.width=(i/Q.length*100)+'%';
+document.querySelectorAll('.opt').forEach(function(x){x.onclick=function(){if(done)return;var n=+x.dataset.n;if(q.k=='m'){var p=sel.indexOf(n);if(p<0)sel.push(n);else sel.splice(p,1);x.classList.toggle('sel')}else fin(q.a==n,[n])}});
+if($('ck'))$('ck').onclick=function(){if(done)return;if(q.k=='i'){var v=$('in').value.trim().toLowerCase().replace(/\s+/g,' ');if(!v)return;fin(q.a.indexOf(v)>=0)}else{if(sel.length!=q.a.length){$('fb').innerHTML='<div class="fb no">Pilih tepat '+q.a.length+' jawaban dulu ya! 😊</div>';return}fin(sel.slice().sort().join()==q.a.join())}}}
+function fin(ok,pk){done=true;var q=Q[i],ans=q.k=='i'?q.a[0]:'';
+document.querySelectorAll('.opt').forEach(function(x){x.disabled=true;var n=+x.dataset.n,c=q.k=='m'?q.a.indexOf(n)>=0:q.a==n;if(c)x.classList.add('ok');else if(x.classList.contains('sel')||(pk&&pk[0]==n))x.classList.add('no')});
+if($('ck'))$('ck').style.display='none';if($('in'))$('in').disabled=true;
+var f=ok?'<div class="fb ok">🎉 Benar! Kamu dapat 1 bintang ⭐</div>':'<div class="fb no">💪 Belum tepat. '+(q.k=='i'?'Jawaban yang benar: <u>'+ans+'</u>. ':'Jawaban benar ditandai hijau. ')+'Semangat ya!</div>';
+if(ok){sc++;$('sc').textContent='⭐ '+sc;good();mas('hop')}else{bad();mas('shk')}
+$('fb').innerHTML=f+'<div style="text-align:center"><button class="go" id="nx">'+(i==Q.length-1?'Lihat Hasil 🏆':'Lanjut ➡️')+'</button></div>';
+$('nx').onclick=function(){if(window.speechSynthesis)speechSynthesis.cancel();i++;i<Q.length?show():end()}}
+function end(){var p=Math.round(sc/Q.length*100),s=p>=80?'⭐⭐⭐':p>=50?'⭐⭐':'⭐',m=p>=80?'Luar biasa! Kamu juara Pancasila!':p>=50?'Bagus! Sedikit lagi kamu jadi juara!':'Kamu sudah berusaha keras. Yuk coba lagi!';
+$('pb').style.width='100%';$('app').innerHTML='<div class="card hero"><div class="mas">'+(p>=50?'🏆':'🌈')+'</div><h1>Petualangan Selesai!</h1><div class="stars">'+s+'</div><p>Skormu <b>'+sc+'</b> dari '+Q.length+' ('+p+')</p><p>'+m+'</p><button class="go" id="rs">Main Lagi 🔄</button></div>';
+if(p>=50){good()}else{tone(392,0,.3);say(m)}$('rs').onclick=intro}
+intro();
+</script>
+</body>
+</html>
